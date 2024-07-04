@@ -13,7 +13,7 @@ import numpy as np
 A = ["Un texto de ejemplo", "Varios textos de ejemplo", "Un gato ve un gato", "Un día, camine y encontre un gato"]
 
 def split_sentence(sentence):
-    return [word.lower() for word in re.findall(r'\b\w+\b|[^a-zA-Z0-9\s]', sentence)]
+    return [word for word in re.findall(r'\b\w+\b|[^\w\s]', sentence)]
 
 Aa = [split_sentence(A[i]) for i in range(len(A))]
 
@@ -33,10 +33,6 @@ Po = [node for node in nodes if G.out_degree(node)==0]
 
 NodesToElim = []
 
-#Original_NodesToElim = NodesToElim.copy()
-
-#print(len(nodes))
-
 Rev_nodes = list(reversed(nodes))
 
 H = G.copy()
@@ -46,10 +42,6 @@ for n in range(0,len(nodes)-5):
     Pred_v = G.predecessors(v)
 
     H_nodes = list(H.nodes())
-
-    #print(v)
-
-    #print(len(H_nodes))
 
     if v in H_nodes:
         NodesToElim.append(v)
@@ -97,8 +89,6 @@ else:
     Narb.update(refine_set(H.subgraph(list(C))))
     print(f'{C}\n {refine_set(H.subgraph(list(C)))}')
 
-#Narb = refine_set(H)
-
 print(f'Quasi-núcleo de la digráfica reducida: {Narb}\n')
 
 ####################################################################################################################
@@ -112,7 +102,7 @@ for n in range(0,len(NodesToElim)):
     Narb_copy = Narb.copy()
 
     if any(G.has_edge(Inv_Original_NodesToElim[n],s) or G.has_edge(s,Inv_Original_NodesToElim[n]) for s in Narb_copy):
-        continue #print('Oki doki')
+        continue 
     else:
         Narb.add(Inv_Original_NodesToElim[n])
 
@@ -141,8 +131,6 @@ print(f"""Palabras:{Aa}\n
     Nodos2: {N2}\n
     Cant.Nodos2: {len(N2)}\n
     Pozos de la digráfica original: {Po}""")
-
-# Info adicional Grado de entrada: {G.in_degree}\n Grado de salida: {G.out_degree}\n Grado: {G.degree}\n Diametro de la gráfica subyacente: {nx.diameter(G.to_undirected())}\n Excentricidad: {dict(nx.eccentricity(G.to_undirected()))}\n Centralidad de los vertices: {nx.degree_centrality(G)}\n
 
 ####################################################################################################################
 #Generando pseudo-oraciones
