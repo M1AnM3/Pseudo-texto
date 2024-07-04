@@ -94,7 +94,7 @@ if nx.is_weakly_connected(H):
 else:
   for C in nx.weakly_connected_components(H):
 
-    Narb.union(refine_set(H.subgraph(list(C))))
+    Narb.update(refine_set(H.subgraph(list(C))))
     print(f'{C}\n {refine_set(H.subgraph(list(C)))}')
 
 #Narb = refine_set(H)
