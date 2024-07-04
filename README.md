@@ -13,4 +13,4 @@ OJO: Este proceso se puede modificar para que ciertos vértices no estén en el 
 
 Finalmente la tercera parte importante, es la generación de pseudo textos; el algoritmo para generarlos es bastante básico, se puede mejorar.
 
-El segundo archivo llamado Cont.py, es un chatbot que usa el metodo para generar pseudo textos del archivo Qn_basic.py; se puede modificar el código para que el quasi-núcleo se actualize (de cierta forma) con el input del usuario o dejar el quasi-núcleo fijo para una converssación.
+El segundo archivo llamado Cont.py, es un chatbot que usa el metodo para generar pseudo textos del archivo Qn_basic.py; se puede modificar el código para que el quasi-núcleo se actualize (de cierta forma) con el input del usuario o dejar el quasi-núcleo fijo para una conversación.
