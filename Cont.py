@@ -165,9 +165,6 @@ while True:
         else:
             Narb.add(Inv_Original_NodesToElim[n])
 
-    if any(G.has_edge(u,v) for u in Narb for v in Narb):
-        print('Hay lazos')
-
     ####################################################################################################################
     # Info básica de la digráfica y casi-núcleo
     ####################################################################################################################
