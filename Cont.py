@@ -20,7 +20,7 @@ def split_sentence(sentence):
     return [word for word in re.findall(r'\b\w+\b|[^\w\s]', sentence)] #'\b\w+\b|[^\w\s]|\s' #'\b\w+\b|[^a-zA-Z0-9\s]'
 
 def DiGraphCo(A):
-  Aa = [split_sentence(A[i]) for i in range(len(A))]
+  Aa = [sentence.split(' ') for sentence in A] #[split_sentence(A[i]) for i in range(len(A))]
 
   G = nx.DiGraph()
 
