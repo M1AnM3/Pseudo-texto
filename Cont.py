@@ -178,7 +178,7 @@ while True:
 
     pos = calculate_positions(G, Narb, N1, N2)
 
-    file_path = "/content/elements.txt"
+    file_path = "elements.txt"
 
     with open(file_path, 'w') as file:
         for element in list(Narb):
