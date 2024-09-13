@@ -144,11 +144,12 @@ while True:
 
     Narb = set()
 
-    if nx.is_weakly_connected(H):
-      Narb = refine_set(H)
-    else:
-      for C in nx.weakly_connected_components(H):
-        Narb.update(refine_set(H.subgraph(list(C))))
+    if not len(H) == 0: # Este if esta por si la digráfica reducida H, termina siendo la digráfica vacía
+      if nx.is_weakly_connected(H):
+        Narb = refine_set(H)
+      else:
+        for C in nx.weakly_connected_components(H):
+          Narb.update(refine_set(H.subgraph(list(C))))
 
     ####################################################################################################################
     # Completando el quasi-núcleo de H a uno de G
