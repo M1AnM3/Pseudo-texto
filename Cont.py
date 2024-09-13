@@ -198,6 +198,9 @@ while True:
 
     InCam = Bb[-1]
     path = Bb
+
+    Continuator = [B[0]]
+    
     for _ in range(100):
         next_node = SigNodo(Bb, InCam, Narb, G)
         if next_node is None:
