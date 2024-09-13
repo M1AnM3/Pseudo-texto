@@ -71,21 +71,20 @@ def RedDigraph(G):
 
   return H
 
-def SigNodo(current_node, quasi_kernel, graph):
+def SigNodo(list_of_current_node, current_node, quasi_kernel, graph):
     if current_node in quasi_kernel:
-        for neighbor in graph[current_node]:
-            if neighbor not in quasi_kernel and set(current_node):
-                return neighbor
+        neighbors = [neighbor for neighbor in graph[current_node] if neighbor not in quasi_kernel and set(current_node)]
+        if neighbors:
+            return random.choice(neighbors)
     elif current_node in N1:
-        for neighbor in graph[current_node]:
-            if neighbor in quasi_kernel:
-                return neighbor
+        neighbors = [neighbor for neighbor in graph[current_node] if neighbor in quasi_kernel]
+        if neighbors:
+            return random.choice(neighbors)
     elif current_node in N2:
-        for neighbor in graph[current_node]:
-            if neighbor in N1:
-                return neighbor
+        neighbors = [neighbor for neighbor in graph[current_node] if neighbor in N1]
+        if neighbors:
+            return random.choice(neighbors)
     return None
-
 
 A = [
     "Un gato ve un gato",
@@ -93,7 +92,7 @@ A = [
     "Quien soy?",
     "Como entrenar un programa?",
     "Agua en la tierra."
-]
+] #Este es un ejemplo muy simple
 
 
 ############################################################################
@@ -195,15 +194,23 @@ while True:
     ####################################################################################################################
     ####################################################################################################################
 
-    Bb = split_sentence(B[0])
+    Bb = B[0].split(' ') #split_sentence(B[0])
 
     InCam = Bb[-1]
     path = Bb
-    for _ in range(50):
-        next_node = SigNodo(InCam, Narb, G)
+    for _ in range(100):
+        next_node = SigNodo(Bb, InCam, Narb, G)
         if next_node is None:
             break
-        path.append(next_node)
+        elif "." == next_node or "?" in next_node or "!" in next_node: #next_node is None:
+            Continuator.append(next_node)
+            InCam = next_node
+            break
+
+        Continuator.append(next_node)
         InCam = next_node
 
-    print(f'Continuator: {" ".join(path)}')
+    if len(Continuator) == 0:
+      print('Continuator : Perdón no se como responder.')
+    else:
+      print(f'Continuator: {" ".join(Continuator)}')
